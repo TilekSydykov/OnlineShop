@@ -1,9 +1,43 @@
 {% trans_default_domain 'ShopBundle' %}
-<h4>{{ 'categories.menu.header'|trans }}</h4>
-<div class="list-group">
-    {% for category in categories %}
-        <a href="{{ path('category', {'slug' : category.slug}) }}" class="list-group-item menu-link">
-            {{ category.name }}
-        </a>
-    {% endfor %}
+
+<div class="menu-container">
+    <div class="list-group menu">
+        <ul>
+            <a href="{{ path('index_main') }}" class="list-item">
+                <li>
+                    <span class="glyphicon glyphicon-home"></span>
+                    {{ 'layout.navbar.home'|trans }}
+                </li>
+            </a>
+            <a href="{{ path('news') }}">
+                <li>
+                    <span class="glyphicon glyphicon-file"></span>
+                    {{ 'layout.navbar.news'|trans }}
+                </li>
+            </a>
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <a href="{{ path('favourites') }}">
+                    <li>
+                        <span class="glyphicon glyphicon-heart"></span>
+                        {{ 'layout.navbar.favourites'|trans }}
+                    </li>
+                </a>
+            {% endif %}
+            <hr>
+            <a href="{{ path('list_categories') }}">
+                <li>
+                    <span class="glyphicon glyphicon-folder-open"></span>
+                    {{ 'layout.navbar.categories'|trans }}
+                </li>
+            </a>
+
+            <a href="{{ path('list_shops') }}">
+                <li>
+                    <span class="glyphicon glyphicon-briefcase"></span>
+                    {{ 'manufacturers.menu.header'|trans }}
+                </li>
+            </a>
+            <hr>
+        </ul>
+    </div>
 </div>

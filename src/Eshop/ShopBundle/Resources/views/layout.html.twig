@@ -10,39 +10,23 @@
     <!-- Static navbar -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                        aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{{ path('index_main') }}">{{ 'layout.navbar.sitename'|trans }}</a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ path('index_main') }}">{{ 'layout.navbar.home'|trans }}</a></li>
-                    <li><a href="{{ path('news') }}">{{ 'layout.navbar.news'|trans }}</a></li>
-                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                        <li><a href="{{ path('favourites') }}">{{ 'layout.navbar.favourites'|trans }}</a></li>
-                    {% endif %}
-                    {{ render(controller('ShopBundle:LayoutsUtility:staticPagesMenu')) }}
-
-                    <li>
-                        <a href="{{ path('showcart') }}">
-                            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-                            {{ render(controller('ShopBundle:Cart:navbarCart')) }}
-                        </a>
-                    </li>
-                    {% include '@Shop/Partials/navbarAuthBlock.html.twig' %}
-                </ul>
-
-                <form action="{{ path('search') }}" class="navbar-form" role="search" method="GET">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="{{ 'search.search'|trans }}"
-                               id="search_phrase" name="search_phrase">
-						<span class="input-group-btn">
+            <div class="row">
+               <div class="col-3 col-md-3 col-xs-12 col-sm-4">
+                   <div class=" navbar-header">
+                       <a href="{{ path('index_main') }}">
+                           <div class="col">
+                               <img src="{{ asset('/assets/images/icon.png') }}" alt="tanukishop logo png" class="icon">
+                               <img src="{{ asset('/assets/images/logo.png') }}" alt="tanukishop logo" class="logo">
+                           </div>
+                       </a>
+                   </div>
+               </div>
+                <div class="col-4 col-md-6 col-sm-5 search-container">
+                    <form action="{{ path('search') }}" class="navbar-form" role="search" method="GET">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="{{ 'search.search'|trans }}"
+                                   id="search_phrase" name="search_phrase">
+                            <span class="input-group-btn">
 							<button type="reset" class="btn btn-default">
 								<span class="glyphicon glyphicon-remove">
 									<span class="sr-only">Close</span>
@@ -54,30 +38,37 @@
 								</span>
                             </button>
 						</span>
-                    </div>
-                </form>
-
-            </div><!--/.nav-collapse -->
+                        </div>
+                    </form>
+                </div>
+                <div class="col-3 col-md-3 col-sm-3 user-container">
+                    <ul class="nav navbar-nav navbar-right row">
+                        <li>
+                            <a href="{{ path('showcart') }}">
+                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                                {{ render(controller('ShopBundle:Cart:navbarCart')) }}
+                            </a>
+                        </li>
+                        {% include '@Shop/Partials/navbarAuthBlock.html.twig' %}
+                    </ul>
+                </div>
+            </div>
         </div>
     </nav>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2">
-                {{ render(controller('ShopBundle:LayoutsUtility:categoriesMenu')) }}
-            </div>
-            <div class="col-md-8">
+    {{ render(controller('ShopBundle:LayoutsUtility:categoriesMenu')) }}
+    <div class="row content">
+        <div class="col-12">
+            <div class="container-fluid">
+                <br>
                 {% block page_content %}
                 {% endblock page_content %}
                 <div class="row" id="latest-products"></div>
-            </div>
-            <div class="col-md-2">
-                {{ render(controller('ShopBundle:LayoutsUtility:manufacturersMenu')) }}
             </div>
         </div>
     </div>
     <footer class="footer">
         <div class="container">
-            <p class="text-muted">{{ 'layout.navbar.sitename'|trans }}, 2015.</p>
+            <p class="text-muted">{{ 'layout.navbar.sitename'|trans }}, 2020.</p>
         </div>
     </footer>
 {% endblock %}

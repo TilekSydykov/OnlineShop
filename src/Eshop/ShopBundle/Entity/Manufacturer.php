@@ -22,6 +22,21 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class Manufacturer
 {
     /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user): void
+    {
+        $this->user = $user;
+    }
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -107,6 +122,12 @@ class Manufacturer
      * @ORM\OneToMany(targetEntity="Product", mappedBy="manufacturer")
      **/
     private $products;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="\Eshop\UserBundle\Entity\User", inversedBy="manufacturers")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
+     **/
+    private $user;
 
     public function __construct()
     {

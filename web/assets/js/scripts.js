@@ -8,7 +8,7 @@ $(function () {
     });
 
     function closeSearch() {
-        var $form = $('.navbar-collapse form[role="search"].active')
+        var $form = $('.navbar-collapse form[role="search"].active');
         $form.find('input').val('');
         $form.removeClass('active');
     }
@@ -38,18 +38,21 @@ $(function () {
     $('#list').click(function (event) {
         event.preventDefault();
         $('#products .item').addClass('list-group-item');
+        $('#grid-cont').removeClass('grid');
     });
     $('#grid').click(function (event) {
         event.preventDefault();
         $('#products .item').removeClass('list-group-item');
         $('#products .item').addClass('grid-group-item');
+        $('#grid-cont').addClass('grid');
     });
 
     //menu items highlight
     highlightMenu();
 
     //get last seen products
-    getLastSeenProducts();
+    
+    // getLastSeenProducts();
 
     //get last seen products
     likesInit();
@@ -103,7 +106,7 @@ function likesInit() {
     $(document).on('click', '.like', function (e) {
         e.preventDefault();
         var clickedIcon = $(this);
-        var productId = $(this).parent().parent().data('id');
+        var productId = $(this).parent().parent().parent().parent().data('id');
         //send ajax
         $.ajax({
             type: 'post',

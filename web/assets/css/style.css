@@ -1,11 +1,10 @@
-body {
-    /*min-height: 2000px;*/
-}
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@469&family=Roboto+Mono:wght@700&family=Roboto:wght@100;400&display=swap');
+
 
 .navbar-static-top {
     margin-bottom: 19px;
 }
-
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -14,7 +13,9 @@ html {
 }
 body {
     /* Margin bottom by footer height */
-    margin-bottom: 60px;
+    margin-bottom: 70px;
+    background-color: #f6f8fa !important;
+    overflow-x: hidden;
 }
 .footer {
     position: absolute;
@@ -24,100 +25,95 @@ body {
     height: 60px;
     background-color: #f5f5f5;
 }
-
+.content{
+    padding-top: 50px;
+    margin-left: 200px;
+    padding-right: 10px;
+}
 /* Categories main page styles
 -------------------------------------------------- */
 .glyphicon { margin-right:5px; }
-.thumbnail
-{
+.thumbnail {
     margin-bottom: 20px;
     padding: 0px;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
+    border: none !important;
+    background-color: rgba(0,0,0,0);
 }
-
-.item.list-group-item
-{
+.item.list-group-item {
     float: none;
     width: 100%;
     background-color: #fff;
     margin-bottom: 10px;
 }
-.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
-{
-    background: #428bca;
-}
-
-.item.list-group-item .list-group-image
-{
+.item.list-group-item .list-group-image {
     margin-right: 10px;
 }
-.item.list-group-item .thumbnail
-{
+.item.list-group-item .thumbnail {
     margin-bottom: 0px;
 }
-.item.list-group-item .caption
-{
+.item.list-group-item .caption {
     padding: 9px 9px 0px 9px;
 }
-.item.list-group-item:nth-of-type(odd)
-{
-    background: #eeeeee;
+.item.list-group-item .product-image {
+    max-height: 150px;
 }
-
-.item.list-group-item:before, .item.list-group-item:after
-{
+.item.list-group-item:nth-of-type(odd){
+    background: #ffffff;
+}
+.item.list-group-item:before, .item.list-group-item:after {
     display: table;
     content: " ";
 }
-
-.item.list-group-item img
-{
+.item.list-group-item img {
     float: left;
 }
-.item.list-group-item:after
-{
+.item.list-group-item:after {
     clear: both;
 }
-.list-group-item-text
-{
+.list-group-item-text {
     margin: 0 0 11px;
-}
-
-.list-group-item-heading
-{
-    min-height: 40px;
-    font-size: medium;
 }
 
 /*
 -------------------------------------------------- */
-
 .description-container {
-    min-height: 180px;
+    min-height: 160px;
 }
-
 .nopadding {
     padding: 0 !important;
     margin: 0 !important;
 }
-
-.product-title {
-    display: inline-block;
-    height: 70px;
-    overflow: hidden;
+.grid {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
-
 .main-categpory-title {
     display: inline-block;
-    height: 50px;
     overflow: hidden;
 }
+#cart-quantity{
+    background-color: red;
+    color: white;
+    border-radius: 14px;
+    line-height: 10px;
+    font-size: 10px;
+    position: absolute;
+    padding: 2px 4px 2px 3px;
+    height: 13px;
+    transform: translateX(-13px) translateY(-8px);
 
+}
 /* top search
 -------------------------------------------------- */
-
+.navbar{
+    background-color: white;
+    position: fixed;
+    width: 100%;
+}
 .navbar-collapse {
     position: relative;
     padding-top: 30px !important;
@@ -137,8 +133,8 @@ body {
     padding: 8px 12px;
     border-radius: 0px;
     border-width: 0px;
-    color: rgb(119, 119, 119);
-    background-color: rgb(248, 248, 248);
+    color: rgb(102, 102, 102);
+    background-color: white;
     border-color: rgb(231, 231, 231);
     box-shadow: none;
     outline: none;
@@ -147,14 +143,70 @@ body {
     padding: 16px 12px;
     font-size: 14pt;
     font-style: italic;
-    color: rgb(160, 160, 160);
+    color: rgb(81, 81, 81);
     box-shadow: none;
 }
 .navbar-collapse form[role="search"] button[type="reset"] {
     display: none;
 }
-
+@media (max-width: 768px){
+    .menu{
+        margin-left: -200px;
+    }
+    .content{
+        margin-left: 0;
+        padding-left: 0;
+    }
+    .search-container{
+        display: none;
+    }
+    .user-container{
+        display: none;
+    }
+    .shop-container{
+        display: block;
+     }
+    .shop-photo-container{
+        width: 100%;
+        text-align: center;
+        height: 110px;
+    }
+    .shop-description{
+        width: 100%;
+    }
+    .grid {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+}
+@media (max-width: 1100px){
+    #cart-sum{
+        display: none;
+    }
+    #cart-icon-currency{
+        display: none;
+    }
+}
+@media (min-width: 1200px) {
+    .col-lg-5ths {
+        width: 20%;
+        float: left;
+    }
+}
 @media (min-width: 768px) {
+    .shop-photo-container{
+        width: 100px;
+        height: 100px;
+        text-align: center;
+    }
+    .shop-description{
+        padding-left: 20px;
+        width: auto;
+    }
+    .shop-container{
+        display: flex;
+    }
     .navbar-collapse {
         padding-top: 0px !important;
         padding-right: 38px !important;
@@ -183,17 +235,10 @@ body {
     .navbar-collapse form[role="search"].active input {
         width: 100%;
     }
-
     .navbar-form .form-control {
         width: 100%; /*This is the issue*/
     }
 }
-
-
-/*INPUT GROUP WIDTH FIX*/
-/* Boostrap CSS 3.2.0 had these new lines in the navbar-form that
-   were different from 3.1.1 [it's all in @media (min-width: 768px)
-   so this behavior only shows up on higher resolutions] */
 .navbar-form .input-group {
     display: inline-table;
     vertical-align: middle;
@@ -203,28 +248,117 @@ body {
 .navbar-form .input-group .form-control {
     width: auto;  /* HERE IS THE CULPRIT */
 }
-/** SOLUTION: in custom CSS **/
-/* make sure navbar-form's input-group goes 100% i.e. full width of screen
-   to compliment the display: inline-table; that showed up in 3.2.0 */
 .navbar-form .input-group {
     width: 100%;
 }
-/* override width: auto; that showed up in 3.2.0
-   with at least 1px for the addon or btn (I had an addon) */
 .navbar-form .input-group .input-group-addon,
 .navbar-form .input-group .input-group-btn {
     width: 1px;
 }
-/* separate .form-control and give it width: 100%; */
 .navbar-form .input-group .form-control {
     width: 100%;
 }
-/*
--------------------------------------------------- */
-
-.like {
-    position: absolute;
-    top: 10px;
-    right: 20px;
+.like{
     font-size: 1.5em;
+    margin: 10px;
+}
+.product-like{
+    height: 10px;
+    display: inline;
+}
+.rounded-like{
+    width: 41px;
+    float: right;
+    transform: translateY(-30px);
+    box-shadow: 2px 2px 6px #b7b7b7;
+    background-color: white;
+    z-index: 10;
+    border-radius: 20px;
+}
+.icon{
+    height: 40px;
+}
+.logo{
+    height: 45px;
+}
+.menu{
+    background-color: white;
+    height: 100vh;
+    overflow-y: auto !important;
+    width: 200px;
+    margin-top: 50px;
+    position: fixed;
+    font-size: 15px;
+    padding-bottom: 100px;
+}
+.menu-container{
+    width: 100%;
+}
+.menu ul{
+    list-style: none;
+    padding: 0;
+}
+.menu ul li{
+    font-weight: bold;
+    padding: 10px;
+}
+.menu ul li:hover{
+    background-color: #f4f4f4;
+}
+.menu ul  a{
+    color: #5e5e5e;
+    text-decoration: none;
+}
+.menu ul li .glyphicon{
+    margin-right: 15px;
+    margin-left: 5px;
+}
+.categories-list{
+    list-style: none;
+    line-height: 12px;
+    width: 100%;
+}
+.well{
+    background-color: white !important;
+}
+.manufacturer-logo{
+    width: 100px;
+    border-radius: 50px;
+    height: 100px;
+    margin: 0 auto;
+    object-fit: cover;
+}
+.manufacturer-logo-mini{
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+}
+.manufacturer-mini{
+    display: inline-flex;
+    margin: 10px 0;
+    font-size: 12px;
+    width: 100%;
+    color: #6e6e6e;
+}
+.manufacturer-mini .m-name{
+    margin-top: 10px;
+    margin-left: 5px;
+}
+.card{
+    background: white;
+    width: auto;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #d6d8d7;
+    font-size: 12px;
+}
+.product-title{
+    color: black;
+    font-size: 1.6rem;
+    line-height: 2rem;
+    max-height: 4rem;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: bold;
 }

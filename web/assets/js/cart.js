@@ -24,9 +24,10 @@ $(document).ready(function () {
         if (isNaN(productQuantity)) {
             productQuantity = 1;
         }
+        var productPriceRaw = productRow.find('.addtocart-btn .price-tag').text();
 
-        var productPriceRaw = productRow.parent().find('.price span').text();
         var productPrice = toPositiveInt(productPriceRaw);
+
         addToNavbarCart(productQuantity, productPrice);
 
         //record to cart

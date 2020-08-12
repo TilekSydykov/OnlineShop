@@ -1,9 +1,11 @@
 # Layout
 layout:
     navbar:
-        sitename: Symfocommerce
+        sitename: Tanuki-shop
         home: Home
         news: News
+        shop: My Shop
+        categories: Categories
         favourites: Favourites
         information: Information
         contacts: Contacts
@@ -33,7 +35,7 @@ categories:
 # Manufacturers menu
 manufacturers:
     menu:
-        header: Manufacturers
+        header: Shops
 
 # Category page
 category:
@@ -49,6 +51,8 @@ category:
 
 # Manufacturer page
 manufacturer:
+    edit: Edit
+    addProduct: AddProduct
     view:
         grid: Grid
         list: List
@@ -60,7 +64,7 @@ manufacturer:
     noproducts: Sorry, no products of this manufacturer yet!
 
 # currency money
-currency: $
+currency: som
 
 # Cart buttons and order pages
 cart:

@@ -9,13 +9,14 @@
 {% block metakeys %}{{ category.metaKeys }}{% endblock %}
 
 {% block page_content -%}
+    <h3>{{ category.name }}</h3>
     <div class="well well-sm">
         <div class="btn-group">
             <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
             </span>{{ 'category.view.list'|trans }}</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
                         class="glyphicon glyphicon-th"></span>{{ 'category.view.grid'|trans }}</a>
         </div>
-        <strong>{{ category.name }}</strong>
+
         <div class="dropdown pull-right">
             <strong>{{ 'category.sort.by'|trans }}</strong>
             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
@@ -29,11 +30,13 @@
             </ul>
         </div>
     </div>
-    <div id="products" class="row list-group">
+    <div id="products" >
     {% if products|length %}
-        {% for product in products %}
-            {{ include('@Shop/Partials/productPreview.html.twig') }}
-        {% endfor %}
+        <div class="grid" id="grid-cont">
+            {% for product in products %}
+                {{ include('@Shop/Partials/productPreview.html.twig') }}
+            {% endfor %}
+        </div>
     {% else %}
         <h3>{{ 'manufacturer.noproducts'|trans }}</h3>
     {% endif %}

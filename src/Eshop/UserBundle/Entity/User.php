@@ -56,6 +56,28 @@ class User extends BaseUser
      **/
     private $orders;
 
+    /**
+     * @ORM\OneToMany(targetEntity="\Eshop\ShopBundle\Entity\Manufacturer", mappedBy="user")
+     **/
+    private $manufacturers;
+
+    /**
+     * @return mixed
+     */
+    public function getManufacturers()
+    {
+        return $this->manufacturers;
+    }
+
+    /**
+     * @param mixed $manufacturers
+     */
+    public function setManufacturers($manufacturers): void
+    {
+        $this->manufacturers = $manufacturers;
+    }
+
+
     public function __construct()
     {
         parent::__construct();

@@ -1,9 +1,11 @@
 # Layout
 layout:
     navbar:
-        sitename: Symfocommerce
+        sitename: E-shop
         home: Главная
         news: Новости
+        shop: Мой Магазин
+        categories: Категории
         favourites: Избранные
         information: Информация
         contacts: Контакты
@@ -33,7 +35,7 @@ categories:
 # Manufacturers menu
 manufacturers:
     menu:
-        header: Производители
+        header: Магазины
 
 # Category page
 category:
@@ -49,6 +51,7 @@ category:
 
 # Manufacturer page
 manufacturer:
+    edit: Редактировать
     view:
         grid: Сетка
         list: Список
@@ -60,7 +63,7 @@ manufacturer:
     noproducts: Извините, нет товаров данного производителя!
 
 # currency money
-currency: р.
+currency: сом
 
 # Cart buttons and order pages
 cart:
@@ -93,7 +96,7 @@ orderform:
     email: Email
     phone: Телефон
     address: Адрес
-    yourcomment: Комментарий к закау
+    yourcomment: Комментарий к заказу
     submit: Заказать
     totalsumis: Сумма заказа
 

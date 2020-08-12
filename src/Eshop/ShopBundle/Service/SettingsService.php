@@ -27,13 +27,15 @@ class SettingsService
      * @return bool
      */
     public function getShowEmptyManufacturers(){
-        return $this->settings->getShowEmptyManufacturers();
+        // return $this->settings->getShowEmptyManufacturers();
+        return true;
     }
 
     /**
      * @return bool
      */
     public function getShowEmptyCategories(){
-        return $this->settings->getShowEmptyCategories();
+        // return $this->settings->getShowEmptyCategories();
+        return true;
     }
 }

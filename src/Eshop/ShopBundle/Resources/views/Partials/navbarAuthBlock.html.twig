@@ -16,9 +16,11 @@
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                aria-expanded="true">
-                {{ 'layout.navbar.loggedas'|trans }} {{ app.user.username }} <span class="caret"></span>
+                 {{ app.user.username }} <span class="caret"></span>
             </a>
+
             <ul class="dropdown-menu">
+                <li><a href="{{ path('index-shop') }}">{{ 'layout.navbar.shop'|trans }}</a></li>
                 <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.navbar.logout'|trans }}</a></li>
             </ul>
         </li>

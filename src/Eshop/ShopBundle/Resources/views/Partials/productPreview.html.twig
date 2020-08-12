@@ -1,33 +1,54 @@
 {% trans_default_domain 'ShopBundle' %}
-<div class="item col-md-4 col-lg-3">
+<div class="item">
     <div class="thumbnail">
         <a href="{{ path('show_product', {'slug' : product.slug}) }}">
             {% if product.images|length %}
-                <img class="group list-group-image"
+                <img class="group list-group-image product-image"
                      src="{{ asset( ('uploads/gallery/' ~ product.images.first().path) | imagine_filter('category_mainpage_thumb')) }}"
                      alt="{{ product.name }}"/>
             {% else %}
-                <img class="group list-group-image"
+                <img class="group list-group-image product-image"
                      src="{{ asset( ('uploads/gallery/no_image_available.png') | imagine_filter('category_mainpage_thumb')) }}"
                      alt="{{ product.name }}"/>
             {% endif %}
-
         </a>
+
         <div class="caption description-container id-row" data-id="{{ product.id }}">
-            {% if product.favourites|length %}
-                <a href="#"><span class="glyphicon glyphicon-heart like" aria-hidden="true"></span></a>
-            {% else %}
-                <a href="#"><span class="glyphicon glyphicon-heart-empty like" aria-hidden="true"></span></a>
-            {% endif %}
-            <a href="{{ path('show_product', {'slug' : product.slug}) }}">
-                <h4 class="group inner list-group-item-heading product-title">
-                    {{ product.name }} ({{ product.measureQuantity }} {{ product.measure.name }})
-                </h4>
+            <div class="product-like">
+                <div class="rounded-like">
+                    {% if product.favourites|length %}
+                        <a href="#"><span class="glyphicon glyphicon-heart like" aria-hidden="true"></span></a>
+                    {% else %}
+                        <a href="#"><span class="glyphicon glyphicon-heart-empty like" aria-hidden="true"></span></a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <a href="{{ path('show_product', {'slug' : product.slug}) }}" class="product-title" >
+                {{ product.name }}
             </a>
-            <p class="lead price">
-                <span>{{ product.price }}</span> {{ 'currency'|trans }}
-            </p>
-            <a class="btn btn-success addtocart-btn" href="#">{{ 'cart.addtocart'|trans }}</a>
+            {% if owner %}
+                <br>
+                <a href="{{ path('edit_product', {'slug': product.slug}) }}">{{ 'manufacturer.edit'|trans }}</a>
+            {% endif %}
+            <div class="manufacturer-mini">
+                <div class="m-logo">
+                    {% if product.manufacturer.path|length %}
+                        <img class="manufacturer-logo-mini" src="{{ asset( ('uploads/images/' ~ product.manufacturer.path) | imagine_filter('some_thumb')) }}"/>
+                    {% else %}
+                        <img class="manufacturer-logo-mini" src="{{ asset( ('uploads/images/shop_no_logo.png') | imagine_filter('some_thumb')) }}"/>
+                    {% endif %}
+                </div>
+                <div class="m-name">
+                    {{ product.manufacturer }}
+                </div>
+            </div>
+
+            <a class="btn btn-success addtocart-btn" href="#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                <span class="price-tag">{{ product.price }}</span>
+                <small>{{ 'currency'|trans }}</small>
+            </a>
+
         </div>
     </div>
 </div>

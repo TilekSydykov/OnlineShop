@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "@Shop/layout.html.twig" %}
+{% trans_default_domain 'ShopBundle' %}
+
+{% block page_content %}
+<div class="container-fluid">
+    <h4>{{ 'manufacturers.menu.header'|trans }}</h4>
+    <ul class="categories-list row">
+        {% for shop in shops %}
+            <a href="{{ path('manufacturer', {'slug': shop.slug}) }}" >
+                <div class="manufacturer-mini card">
+                    <div class="m-logo">
+                        {% if shop.path|length %}
+                            <img class="manufacturer-logo-mini" src="{{ asset( ('uploads/images/' ~ shop.path) | imagine_filter('some_thumb')) }}"/>
+                        {% else %}
+                            <img class="manufacturer-logo-mini" src="{{ asset( ('uploads/images/shop_no_logo.png') | imagine_filter('some_thumb')) }}"/>
+                        {% endif %}
+                    </div>
+                    <div class="m-name">
+                        {{ shop.name }}
+                    </div>
+                </div></a>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

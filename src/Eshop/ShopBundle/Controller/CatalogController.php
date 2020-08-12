@@ -25,20 +25,15 @@ class CatalogController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $newsRepository = $em->getRepository('ShopBundle:News');
-        $slideRepository = $em->getRepository('ShopBundle:Slide');
+
         $productRepository = $em->getRepository('ShopBundle:Product');
 
         //sorted by order number
-        $slides = $slideRepository->findBy(['enabled' => true], ['slideOrder' => 'ASC']);
-        $lastNews = $newsRepository->getLastNews();
         $latestProducts = $productRepository->getLatest(12, $this->getUser());
         $featuredProducts = $productRepository->getFeatured(12, $this->getUser());
 
         return ['featured_products' => $featuredProducts,
                 'latest_products' => $latestProducts,
-                'news' => $lastNews,
-                'slides' => $slides
         ];
     }
 
@@ -105,6 +100,11 @@ class CatalogController extends Controller
      */
     public function showProductAction(Product $product)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        $manufacturerRepository = $em->getRepository('ShopBundle:Manufacturer');
+
+
         return ['product' => $product];
     }
 
@@ -178,5 +178,42 @@ class CatalogController extends Controller
     public function showStaticPageAction(StaticPage $page)
     {
         return ['page' => $page];
+    }
+
+    /**
+     *
+     * @Route("/categories",name="list_categories")
+     * @Method("GET")
+     * @Template()
+     */
+    public function listCategoriesAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $categoryRepository = $em->getRepository('ShopBundle:Category');
+
+        $settings = $this->get('app.site_settings');
+        $showEmpty = $settings->getShowEmptyCategories();
+
+        $categories = $categoryRepository->getAllCategories($showEmpty);
+        return ['categories' => $categories];
+    }
+
+    /**
+     *
+     * @Route("/shops",name="list_shops")
+     * @Method("GET")
+     * @Template()
+     */
+    public function listShopsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $manufacturerRepository = $em->getRepository('ShopBundle:Manufacturer');
+
+        $settings = $this->get('app.site_settings');
+        $showEmpty = $settings->getShowEmptyManufacturers();
+
+        $manufacturers = $manufacturerRepository->getAllManufacturers($showEmpty);
+
+        return ['shops' => $manufacturers];
     }
 }

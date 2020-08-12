@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "@Shop/layout.html.twig" %}
+{% trans_default_domain 'ShopBundle' %}
 
-</body>
-</html>
+{% block page_content %}
+    <h4>{{ 'layout.navbar.categories'|trans }}</h4>
+    <ul class="categories-list">
+        {% for category in categories %}
+            <a href="{{ path('category', {'slug': category.slug}) }}">
+                <li>
+                    {{ category.name }}
+                </li>
+            </a>
+            <br>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

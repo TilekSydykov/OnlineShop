@@ -1,0 +1,27 @@
+form[name = 'eshop_shopbundle_manufacturer'] {
+    display: table;
+}
+
+form[name = 'eshop_shopbundle_manufacturer'] input[type='text']{
+    width: 100%;
+    margin-top: 10px;
+    padding: 5px;
+}
+form[name = 'eshop_shopbundle_manufacturer'] input[type='submit']{
+    margin-top: 10px;
+    padding: 5px;
+}
+
+form[name = 'eshop_shopbundle_product'] {
+    display: table;
+}
+
+form[name = 'eshop_shopbundle_product'] input[type='text']{
+    width: 100%;
+    margin-top: 10px;
+    padding: 5px;
+}
+form[name = 'eshop_shopbundle_product'] input[type='submit']{
+    margin-top: 10px;
+    padding: 5px;
+}

@@ -74,4 +74,19 @@ class ManufacturerRepository extends EntityRepository
             ->getQuery()
             ->getOneOrNullResult();
     }
+
+    public function getByUser($user)
+    {
+        $qb = $this->getEntityManager()
+            ->createQueryBuilder()
+            ->select('m')
+            ->from('ShopBundle:Manufacturer', 'm')
+            ->where('m.user = :user')
+            ->setParameter('user', $user)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+
+        return $qb;
+    }
 }
